@@ -8,7 +8,7 @@ export const Navbar =() => {
   const { loginWithRedirect, logout, isAuthenticated, user } = useAuth0();
   return (
     <div className="navbar">
-      <h3> Apple Store  </h3>
+      <h3 className="h3"> Apple Store  </h3>
       <div className="links">
         <Link to="/"> Shop </Link>
 
@@ -18,9 +18,9 @@ export const Navbar =() => {
           <ShoppingCart size={32} />
         </Link>
       </div>
-      <li>{isAuthenticated && <p>{user.name}</p>}</li>
+      {isAuthenticated && <p className="user">{user.name}</p>}
       {isAuthenticated ? (
-        <li>
+        
           <button
             onClick={() =>
               logout({ logoutParams: { returnTo: window.location.origin } })
@@ -28,11 +28,11 @@ export const Navbar =() => {
           >
             Log Out
           </button>
-        </li>
+        
       ) : (
-        <li>
-          <button onClick={() => loginWithRedirect()}>Log In</button>;
-        </li>
+        
+          <button onClick={() => loginWithRedirect()}>Log In</button>
+        
       )}
     </div>
   );
