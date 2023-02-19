@@ -4,6 +4,7 @@ import { ShoppingCart } from "phosphor-react";
 import "./navbar.css";
 import { useAuth0 } from "@auth0/auth0-react";
 
+
 export const Navbar =() => {
   const { loginWithRedirect, logout, isAuthenticated, user } = useAuth0();
   return (
@@ -21,7 +22,7 @@ export const Navbar =() => {
       {isAuthenticated && <p className="user">{user.name}</p>}
       {isAuthenticated ? (
         
-          <button
+          <button className="btn btn-dark"
             onClick={() =>
               logout({ logoutParams: { returnTo: window.location.origin } })
             }
@@ -31,7 +32,7 @@ export const Navbar =() => {
         
       ) : (
         
-          <button onClick={() => loginWithRedirect()}>Log In</button>
+          <button className="btn btn-light" onClick={() => loginWithRedirect()}>Log In</button>
         
       )}
     </div>
